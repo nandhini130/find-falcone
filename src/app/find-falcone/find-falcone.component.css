@@ -1,0 +1,138 @@
+.spotlight {
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  box-shadow: 0 0.25em 0.5em 0 rgb(0 0 0 / 25%);
+  height: calc(100vh - 66px);
+  /* height: 100vh; */
+  overflow: hidden;
+  position: relative;
+}
+
+.gamespot {
+  /* height: 100vh; */
+  height: calc(100vh - 66px);
+
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0.25em 0.5em 0 rgb(0 0 0 / 25%);
+  border-top: 2px solid #e44c65;
+}
+
+.spotlight p {
+  /* max-width: 800px;
+  font-family: 'Poppins', sans-serif; */
+  color: #59b14a;
+  font-size: 1.8rem;
+  line-height: 2.1rem;
+}
+ .line {
+  position: relative;
+  top: 30%;
+  width: 24em;
+  margin: 0 auto;
+  /* border-right: 2px solid #59b14a; */
+  /* font-size: 180%; */
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);
+ }
+
+ .animi-typewriter0 {
+   animation: typewriter 4s steps(60) 1s 1 normal both,
+    binkCursor 500ms steps(60) forwards normal;
+  }
+
+  .animi-typewriter1 {
+    animation: typewriter 4s steps(45) 5s 1 normal both,
+     binkCursor 500ms steps(45) forwards normal;
+   }
+
+   .animi-typewriter2 {
+    animation: typewriter 4s steps(45) 9s 1 normal both,
+     binkCursor 500ms steps(45) forwards normal;
+   }
+
+   .animi-typewriter4 {
+    animation: typewriter 4s steps(45) 14s 1 normal both,
+     binkCursor 500ms steps(45) forwards normal;
+   }
+
+   .animi-typewriter5 {
+    animation: typewriter 4s steps(45) 18s 1 normal both,
+     binkCursor 500ms steps(45) forwards normal;
+   }
+
+   @keyframes typewriter {
+    from {
+     width: 0
+    }
+    to {
+     width: 50%
+    }
+  }
+  @keyframes binkCursor {
+    from {
+      border-right-color: #59b14a;
+    }
+    to {
+      border-right-color: transparent;
+    }
+  }
+
+
+ cloud-1-2 {
+  position: absolute;
+  left: 0px;
+  top: 100px;
+  right: 0px;
+  width: 100%;
+}
+
+
+.gameBtn {
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.primebtn {
+  /* position: relative;
+  display: inline-block; */
+  border-radius: 6em;
+  border: none;
+  text-decoration: none!important;
+  font-size: 1em;
+  font-weight: 400;
+  background-color: #03c9a9;
+  color: #fff;
+  overflow: hidden;
+  margin: 1.5em 2.5em 0px 0px;
+  padding: 1em 2em;
+  cursor: pointer;
+}
+
+
+.gameRules {
+  /* font-family: 'Poppins', sans-serif; */
+  text-align: center;
+  color: white !important;
+  font-size: 1.5rem;
+}
+
+ .timeZone {
+   float: right;
+   position: relative;
+   right: 20px;
+   font-size: 1em;
+  font-weight: 400;
+
+ }
+
+ .timeZone span {
+  /* background-color: #03c9a9; */
+  margin-right: 10px;
+  padding: 5px;
+  border: 1px solid #30c9a9;
+ }

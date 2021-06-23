@@ -1,0 +1,39 @@
+
+<!-- <p class="line animi-typewriter"  [ngClass]="">
+  <span *ngFor="let char of newstory">{{char}}</span>
+</p> -->
+
+<!-- <p class="line">
+  <span>This is a new line for testing</span>
+</p> -->
+
+<section class="spotlight">
+  <p [ngClass]="i != 3 ? 'line animi-typewriter'+i : ''" class="" *ngFor="let newline of newstory; let i = index" >
+    <span [innerHTML]="newline"></span>
+  </p>
+
+  <img src="../../assets/img/bg-temp.png"  sizes="100vw" alt="" class="cloud-1-2">
+  <a [routerLink]='"."' fragment="gameZone" class="goto-next">Next</a>
+</section>
+
+<section id="gameZone" class="gamespot">
+  <div class="gameRules">
+    <h1> Ready to find Falcone?</h1>
+    <p>
+      <i>select any 4 planet and space vehicles to send to these planets</i>
+
+    </p>
+    <p class="timeZone">
+      <span style="border-radius: 10px 0 0 10px;">Time Taken</span>
+      <span style="border-radius: 0 10px 10px 0;">120</span>
+    </p>
+
+  </div><br>
+  <app-planets [planetDetails]="planetDetails" [vehicleDetails]="vehicleDetails" [gameReset]="resetFlag"></app-planets>
+
+  <div class="gameBtn">
+    <button type="button" class="btn btn-primary btn-lg primebtn">Find Falcone</button>
+    <button type="button" class="btn btn-primary btn-lg primebtn" (click)="gameReset()">Reset</button>
+  </div>
+
+</section>

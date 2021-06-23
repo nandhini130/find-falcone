@@ -1,0 +1,14 @@
+.maincontainer {
+  height: 100%;
+  display: flex;
+  flex-flow: column wrap;  /* flex direction - column and flex-wrap - wrap */
+  flex-flow: column;  /* flex direction - column and flex-wrap - wrap */
+}
+
+.flex-items {
+  /* margin: 2px; */
+}
+
+.main-content {
+  flex: 2;
+}

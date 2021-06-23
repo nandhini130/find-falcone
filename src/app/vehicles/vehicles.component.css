@@ -1,0 +1,13 @@
+input[type="radio"] {
+  cursor: pointer;
+  border: 2px solid #30c9a9;
+}
+
+input[type="radio"]:checked {
+  background-color: #30c9a9;
+}
+
+input[type="radio"][disabled] {
+  background-color: grey;
+  cursor: not-allowed;
+}

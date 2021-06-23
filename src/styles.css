@@ -1,1 +1,49 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Google font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: #100f24;
+  font-family: 'Poppins', sans-serif;
+  color: white !important;
+}
+
+
+/* Goto Next */
+
+.goto-next {
+  display: block;
+  position: absolute;
+  border: 0;
+  bottom: 0;
+  left: 50%;
+  height: 10em;
+  width: 10em;
+  margin: 0 0 0 -5em;
+  overflow: hidden;
+  text-indent: 10em;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+  .goto-next:before {
+    background-image: url("../src//assets/img/arrow.svg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    content: '';
+    display: block;
+    height: 1.5em;
+    left: 50%;
+    margin: -0.75em 0 0 -1em;
+    position: absolute;
+    top: 50%;
+    width: 2em;
+    z-index: 1;
+  }

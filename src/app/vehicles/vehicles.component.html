@@ -1,0 +1,8 @@
+<div class="list-group">
+  <label class="list-group-item" *ngFor="let vehicle of vehicleDetails">
+    <input class="form-check-input me-1" name="{{selectedPlanet.name}}_spaceVehicle" type="radio" value="{{vehicle.name}}"
+     (change)="onVehicleselect($event, vehicle.name)" [disabled]="(selectedPlanet.distance > vehicle.max_distance) || (vehicle.total_no < 1)">
+    {{vehicle.name}}
+    <span class="badge bg-primary rounded-pill" style="background-color: #30c9a9!important;">{{vehicle.total_no}}</span>
+  </label>
+</div>

@@ -1,0 +1,109 @@
+.primebtn {
+  /* position: relative;
+  display: inline-block; */
+  border-radius: 6em;
+  border: none;
+  text-decoration: none!important;
+  font-size: 1em;
+  font-weight: 400;
+  background-color: #03c9a9;
+  color: #fff;
+  overflow: hidden;
+  margin: 1.5em 2.5em 0px 0px;
+  padding: 1em 2em;
+  cursor: pointer;
+}
+
+.planetcontainer {
+  display: flex;
+  padding: 0;
+  margin: 5rem 0;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards {
+  margin: 2rem;
+  width: 16%;
+  perspective: 600px;
+  transform-style: preserve-3d;
+
+}
+
+.card-item {
+  /* position: absolute; */
+  background-color: #fff;
+  color: black;
+  border-radius: 6px;
+  box-shadow: 0 20px 40px -14px rgba(0,0,0,0.25);
+  overflow: hidden;
+  transition: transform 0.5s;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  position: absolute;
+  transform: rotateY(0);
+}
+
+.card-back {
+  transform: rotateY(-180deg);
+}
+
+.cards:hover  .card-front{
+  transform: rotateY(180deg);
+}
+
+.cards:hover  .card-back{
+  transform: rotateY(0deg);
+}
+
+.hideElements {
+  display: none;
+}
+
+/* animation */
+
+.animIn{
+  animation: test1 1s ease 1s 1 both;
+}
+.animOut{
+  animation: test2 1s ease 1s 1 both;
+}
+
+@keyframes test1 {
+  0%{ transform: translateX(100%);}
+  100%{transform: translateX(0%);}
+}
+@keyframes test2 {
+  0%{ transform: translateY(0%);}
+  100%{transform: translateY(300%);}
+}
+
+/* // Content */
+.cards  .card-info {
+display: flex;
+flex: 1 1 auto;
+flex-direction: column;
+padding: 1rem;
+line-height: 1.5em;
+}
+
+.cards  .card-title {
+font-size: 25px;
+line-height: 1.1em;
+color: #32325d;
+margin-bottom: 0.2em;
+}
+
+/* // Images */
+.cards .card-image{
+height: 200px;
+overflow: hidden;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+border-radius: 6px 6px 0px 0px;
+opacity: 0.91;
+}
+
