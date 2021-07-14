@@ -14,19 +14,18 @@ import { Component,
 export class PlanetsComponent implements OnInit, DoCheck {
 
   @Input() planetDetails: any;
-  @Input() vehicleDetails: any;
-  @Input() gameReset: boolean;
+  // @Input() gameReset: boolean;
 
-  @ViewChild('Donlon') donlon: ElementRef;
-  @ViewChild('Enchai') enchai: ElementRef;
-  @ViewChild('Jebing') jebing: ElementRef;
-  @ViewChild('Sapir') sapir: ElementRef;
-  @ViewChild('Lerbin') lerbin: ElementRef;
-  @ViewChild('Pingasor') pingasor: ElementRef;
+  // @ViewChild('Donlon') donlon: ElementRef;
+  // @ViewChild('Enchai') enchai: ElementRef;
+  // @ViewChild('Jebing') jebing: ElementRef;
+  // @ViewChild('Sapir') sapir: ElementRef;
+  // @ViewChild('Lerbin') lerbin: ElementRef;
+  // @ViewChild('Pingasor') pingasor: ElementRef;
 
-  public planetCounter: number = 0;
-  public selectedPlanets: any = [];
-  public unselectedPlanets: any = [];
+  // public planetCounter: number = 0;
+  // public selectedPlanets: any = [];
+  // public unselectedPlanets: any = [];
 
   constructor(private renderer: Renderer2) { }
 
@@ -60,60 +59,60 @@ export class PlanetsComponent implements OnInit, DoCheck {
     // }
   }
 
-  onPlanetSelect($event: any, planetName: string) {
-    console.log($event);
-    console.log(planetName);
-if(!this.selectedPlanets.includes(planetName)) {
+//   onPlanetSelect($event: any, planetName: string) {
+//     console.log($event);
+//     console.log(planetName);
+// if(!this.selectedPlanets.includes(planetName)) {
 
 
-    if(this.planetCounter == 3) {
+//     if(this.planetCounter == 3) {
 
-      this.selectedPlanets.push(planetName);
+//       this.selectedPlanets.push(planetName);
 
-      this.unselectedPlanets =  this.planetDetails.filter(item => !(this.selectedPlanets.includes(item.name)));
-      console.log(this.unselectedPlanets);
+//       this.unselectedPlanets =  this.planetDetails.filter(item => !(this.selectedPlanets.includes(item.name)));
+//       console.log(this.unselectedPlanets);
 
-      this.unselectedPlanets.forEach((unselectedPlanet) => {
-        let element = document.getElementById(unselectedPlanet.name);
-        element.classList.add('animOut');
-        setTimeout(() => {
-          element.classList.add('hideElements');
-          // this.selectedPlanets.forEach((selectedPlanet) => {
-          //   let planetRef = document.getElementById(selectedPlanet);
-          //   planetRef.classList.add('selectedCards');
-          // });
-        },2000);
-      });
-
-
+//       this.unselectedPlanets.forEach((unselectedPlanet) => {
+//         let element = document.getElementById(unselectedPlanet.name);
+//         element.classList.add('animOut');
+//         setTimeout(() => {
+//           element.classList.add('hideElements');
+//           // this.selectedPlanets.forEach((selectedPlanet) => {
+//           //   let planetRef = document.getElementById(selectedPlanet);
+//           //   planetRef.classList.add('selectedCards');
+//           // });
+//         },2000);
+//       });
 
 
-    } else {
-      this.selectedPlanets.push(planetName);
-      this.planetCounter++;
-    }
-  } else {
-    console.log('selectd already');
 
-  }
 
-  }
+//     } else {
+//       this.selectedPlanets.push(planetName);
+//       this.planetCounter++;
+//     }
+//   } else {
+//     console.log('selectd already');
 
-  resetGame() {
-    if(this.gameReset) {
-      this.planetCounter = 0;
-      this.unselectedPlanets.forEach((unselectedPlanet) => {
-        let element = document.getElementById(unselectedPlanet.name);
-        element.classList.remove('animOut');
-        element.classList.remove('hideElements');
+//   }
 
-          // this.selectedPlanets.forEach((selectedPlanet) => {
-          //   let planetRef = document.getElementById(selectedPlanet);
-          //   planetRef.classList.remove('selectedCards');
-          // });
+//   }
 
-      });
-    }
-  }
+  // resetGame() {
+  //   if(this.gameReset) {
+  //     this.planetCounter = 0;
+  //     this.unselectedPlanets.forEach((unselectedPlanet) => {
+  //       let element = document.getElementById(unselectedPlanet.name);
+  //       element.classList.remove('animOut');
+  //       element.classList.remove('hideElements');
+
+  //         // this.selectedPlanets.forEach((selectedPlanet) => {
+  //         //   let planetRef = document.getElementById(selectedPlanet);
+  //         //   planetRef.classList.remove('selectedCards');
+  //         // });
+
+  //     });
+  //   }
+  // }
 
 }

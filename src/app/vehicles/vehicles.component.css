@@ -4,7 +4,8 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked {
-  background-color: #30c9a9;
+  background-color: #30c9a9 !important;
+  opacity: 1;
 }
 
 input[type="radio"][disabled] {

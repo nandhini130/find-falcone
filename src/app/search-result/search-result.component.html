@@ -1,1 +1,16 @@
-<p>search-result works!</p>
+<div class="resultContainer">
+  <div class="result" *ngIf="status == 'success'">
+    <p>
+      Success!  Congratulations on Finding Falcone. King Shan is mighty pleased.
+    </p>
+    <br>
+    <h2>Time Taken : {{timeTaken}}</h2>
+    <h2>Planet Found : {{planetName}} </h2>
+  </div>
+
+  <div class="result" *ngIf="status == 'false'">
+    <p>Sorry! Better luck next time.</p>
+  </div>
+
+ <button type="button" class="btn btn-primary btn-lg primebtn" (click)="restartGame()">Start Again!</button>
+</div>

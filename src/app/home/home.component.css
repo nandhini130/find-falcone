@@ -1,0 +1,97 @@
+
+.spotlight {
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
+  /* box-shadow: 0 0.25em 0.5em 0 rgb(0 0 0 / 25%); */
+  height: calc(100vh - 155px);
+  overflow: hidden;
+  position: relative;
+}
+
+
+.spotlight p {
+  color: #59b14a;
+  font-size: 1.6rem;
+  line-height: 2.1rem;
+}
+ .line {
+  position: relative;
+  top: 30%;
+  width: 24em;
+  margin: 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  transform: translateY(-50%);
+ }
+
+ .animi-typewriter0 {
+   animation: typewriter 4s steps(66) 1s 1 normal both,
+    binkCursor 500ms steps(66) forwards normal;
+  }
+
+  .animi-typewriter1 {
+    animation: typewriter 4s steps(66) 5s 1 normal both,
+     binkCursor 500ms steps(66) forwards normal;
+   }
+
+   .animi-typewriter2 {
+    animation: typewriter 4s steps(70) 9s 1 normal both,
+     binkCursor 500ms steps(70) forwards normal;
+   }
+
+   .animi-typewriter4 {
+    animation: typewriter 4s steps(60) 14s 1 normal both,
+     binkCursor 500ms steps(60) forwards normal;
+   }
+
+   .animi-typewriter5 {
+    animation: typewriter 4s steps(70) 18s 1 normal both,
+     binkCursor 500ms steps(70) forwards normal;
+   }
+
+   .animi-typewriter7 {
+    animation: typewriter 4s steps(71) 23s 1 normal both,
+     binkCursor 500ms steps(71) forwards normal;
+   }
+
+   .animi-typewriter8 {
+    animation: typewriter 4s steps(70) 27s 1 normal both,
+     binkCursor 500ms steps(70) forwards normal;
+   }
+
+   .animi-typewriter9 {
+    animation: typewriter 4s steps(70) 31s 1 normal both,
+     binkCursor 500ms steps(60) forwards normal;
+   }
+
+   .animi-typewriter10 {
+    animation: typewriter 4s steps(60) 35s 1 normal both,
+     binkCursor 500ms steps(60) forwards normal;
+   }
+
+   @keyframes typewriter {
+    from {
+     width: 0
+    }
+    to {
+     width: 50%
+    }
+  }
+  @keyframes binkCursor {
+    from {
+      border-right-color: #59b14a;
+    }
+    to {
+      border-right-color: transparent;
+    }
+  }
+
+ cloud-1-2 {
+  position: absolute;
+  left: 0px;
+  top: 100px;
+  right: 0px;
+  width: 100%;
+}

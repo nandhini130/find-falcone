@@ -1,31 +1,30 @@
-
-
 <div class="planetcontainer animIn">
+
   <div class="cards" *ngFor="let planet of planetDetails" id='{{planet.name}}'>
-    <div class="card-item card-front">
-      <div class="card-image" style="background-image: url('../../assets/img/planet2.png');">
-      </div>
-      <div class="card-info">
-        <h2 class="card-title">{{planet.name}}</h2>
-        <p class="card-intro">Distance - {{planet.distance}} megamiles far from Lengaburu</p>
-          <button type="button" class="btn btn-primary btn-lg primebtn" id='{{planet.name}}btn' (click)="onPlanetSelect($event, planet.name)">Select</button>
-      </div>
-    </div>
+    <!-- <div class="gradient-border"> -->
+        <div class="card-item card-front">
+          <div class="card-image" style="background-image: url('../../assets/img/{{planet.name}}.png');">
+          </div>
+          <div class="card-info">
+            <h2 class="card-title">{{planet.name}}</h2>
+            <p class="card-intro">Distance - {{planet.distance}} megamiles far from Lengaburu</p>
+          </div>
+        </div>
 
-    <div class="card-item card-back">
-      <div class="card-info" style="background-color: #30c9a9;">
-        <h2 class="card-title">{{planet.name}}</h2>
+        <div class="card-item card-back">
+          <div class="card-info">
+            <h2 class="card-title">{{planet.name}}</h2>
+          </div>
+          <div class="card-image" style="height: 152px !important">
+            <app-vehicles [currentPlanet]="planet"></app-vehicles>
+          </div>
+          <div class="card-info">
+          </div>
       </div>
-      <div class="card-image">
-        <app-vehicles [selectedPlanet]="planet" [vehicleDetails]="vehicleDetails"></app-vehicles>
-      </div>
-      <div class="card-info">
-        <button type="button" class="btn btn-primary btn-lg primebtn" id='{{planet.name}}btn' (click)="onPlanetSelect($event, planet.name)">Select</button>
-      </div>
-  </div>
-
+    <!-- </div> -->
   </div>
 </div>
+
 
 
 

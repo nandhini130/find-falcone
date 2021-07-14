@@ -1,9 +1,11 @@
+
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { BehaviorSubject } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 // models
 import { Planets } from '../models/planet.model';
@@ -16,47 +18,38 @@ const BACKEND_URL = environment.api_url;
 })
 export class GetSourcesService {
 
-  private planets = new BehaviorSubject<string>('');
-  private vehicles = new BehaviorSubject<string>('');
-
-  public selectedPlanets: any = [];
-  public selectedVehicles: any = [];
-  public timeTaken: any = [];
-
-  constructor(private http: HttpClient) { }
-
-  // planet
-  sendSelectedPlanet(key: string) {
-    this.selectedPlanets.push(key);
-    this.planets.next(key);
-  }
-
-  getSelectedPlanet(): Observable<string> {
-    return this.planets.asObservable();
-  }
-
-  // vehicle
-  sendSelectedVehicle(key: string) {
-    this.selectedVehicles.push(key);
-    this.vehicles.next(key);
-  }
-
-  getSelectedVehicle(): Observable<string> {
-    return this.vehicles.asObservable();
-  }
-
-  // time taken calculation
-
+  constructor(private http: HttpClient) {}
 
   // fetch planet details
-  getPlanet() {
-    return this.http.get<Planets>(`${BACKEND_URL}planets`);
+  getPlanets(): Observable<Planets[]> {
+    return this.http.get<Planets[]>(`${BACKEND_URL}planets`)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
 
   // fetch available vehicles
-  getVehicles() {
-    return this.http.get<Vehicles>(`${BACKEND_URL}vehicles`);
+  getVehicles(): Observable<Vehicles[]> {
+    return this.http.get<Vehicles[]>(`${BACKEND_URL}vehicles`)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
+  // find falcone
+  findFalcone(data): Observable<any> {
+    return this.http.post<any>(`${BACKEND_URL}find`, data, {
+      headers : new HttpHeaders({
+        'Accept':'application/json'
+       })
+   })
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
+  handleError(error: any) {
+    return throwError(error.message || 'Something went wrong')
+  }
 }

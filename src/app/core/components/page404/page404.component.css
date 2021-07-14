@@ -1,0 +1,31 @@
+.errorContainer {
+  background: url('../../../../assets/img/Stars.svg');
+  column-count: 2;
+}
+
+.errorMsg {
+  height: 690px;
+}
+
+.errorMsg h1, .errorMsg p {
+  text-align: center;
+  position: relative;
+  top: 30%;
+}
+
+.errorMsg h1 {
+  margin: 20px 0 16px;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: .03em;
+}
+
+.errorMsg p {
+  color: aliceblue;
+  padding: 10px 80px;
+  margin-bottom: 40px;
+  font-size: 16px;
+  line-height: 1.63;
+  letter-spacing: .033em;
+}

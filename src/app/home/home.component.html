@@ -1,0 +1,8 @@
+<section class="spotlight" id="about">
+  <p [ngClass]="(i != 3 || i != 6) ? 'line animi-typewriter'+i : ''" class="" *ngFor="let newline of newstory; let i = index" >
+    <span [innerHTML]="newline"></span>
+  </p>
+
+  <img src="../../assets/img/bg-temp.png"  sizes="100vw" alt="" class="cloud-1-2">
+  <a routerLink="/find-falcone" routerLinkActive="active" class="goto-next">Next</a>
+</section>

@@ -1,6 +1,7 @@
+import { GetSourcesService } from './../core/services/get-sources.service';
 import { Component, OnInit, Input } from '@angular/core';
 
-import { GetSourcesService } from '../core/services/get-sources.service'
+import { DataStoreService } from '../core/services/data-store.service';
 
 @Component({
   selector: 'app-vehicles',
@@ -9,40 +10,26 @@ import { GetSourcesService } from '../core/services/get-sources.service'
 })
 export class VehiclesComponent implements OnInit {
 
-  @Input() vehicleDetails: any;
-  @Input() selectedPlanet: any;
+  @Input() currentPlanet: any;
 
-  public selectedvehicle: string[] = [];
+  public vehicleDetails: any = [];
+  public selectedVehicle: any = '';
 
-  constructor(private getSourcesService: GetSourcesService) { }
+  constructor(private dataStoreService: DataStoreService) {}
 
   ngOnInit(): void {
-
-    this.getSourcesService.getSelectedVehicle().subscribe( vehicle => {
-
-    });
-  }
-
-  onVehicleselect(event: any, vehicleName: string) {
-    // console.log(event.target.value);
-    // console.log(event.target.checked);
-    console.log(event);
-
-
-    console.log('vehicle',vehicleName);
-    console.log(this.selectedPlanet);
-    this.vehicleDetails.forEach(element => {
-      // if(this.prevSelection && element.name == this.prevSelection) {
-      //   element.total_no++;
-      // }
-      if(element.name === vehicleName && event.target.checked) {
-
-        this.getSourcesService.sendSelectedVehicle(element.name);
-        element.total_no--;
-        this.selectedvehicle.push(element.name);
-        return;
+    this.dataStoreService.getSelectedVehicles().subscribe(data => {
+      if(data.length > 0 ) {
+        this.vehicleDetails = data;
+      console.log(this.currentPlanet.name);
       }
+
     });
+   }
+
+  onVehicleselect(event: any, planetName: any, vehicleName: string) {
+    this.selectedVehicle = vehicleName;
+    this.dataStoreService.setSelectedVehicles(planetName, vehicleName);
   }
 
 

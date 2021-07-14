@@ -1,8 +1,21 @@
 import { ThrowStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component,
+  OnInit,
+  ViewChild,
+  QueryList,
+  ViewChildren,
+  Renderer2,
+  ElementRef,
+  DoCheck  } from '@angular/core';
+  import {
+    Route,
+    Router,
+    RouterStateSnapshot,
+  } from '@angular/router';
 
 import { AuthenticationService } from '../core/services/authentication.service';
 import { GetSourcesService } from '../core/services/get-sources.service';
+import { DataStoreService } from '../core/services/data-store.service'
 
 // models
 
@@ -12,33 +25,34 @@ import { GetSourcesService } from '../core/services/get-sources.service';
   styleUrls: ['./find-falcone.component.css']
 })
 export class FindFalconeComponent implements OnInit {
+
+  @ViewChild('spaceVehicleBtn') spaceVehicleBtn: ElementRef;
+  @ViewChild('vehicleZone') vehicleZone: ElementRef;
+  @ViewChild('sendMsg') sendMsg: ElementRef;
+  @ViewChild('sendBtn') sendBtn: ElementRef;
+
+  @ViewChildren('planets') planets: QueryList<ElementRef>;
+
   public authToken: string;
   public planetDetails: any;
   public vehicleDetails: any;
-  public resetFlag: boolean = false;
+  public resetFlag: boolean;
+  public timeTaken: any;
+  public invadePlanets: any = [];
 
-
-  public newstory = [
-    'Our problem is set in the planet of Lengaburu in the distant ',
-    'galaxy of Tara B. After the recent war with neighbouring planet',
-    'Falicornia, King Shan has exiled the Queen of Falicornia for 15 years.',
-    '<br>',
-    'Queen Al Falcone is now in hiding. But if King Shan can find',
-    'her before the years are up, she will be exiled for another 15 years.',
-    '<br>',
-    'King Shan has received intelligence that Al Falcone is in hiding in one',
-    'of these 6 planets - DonLon, Enchai, Jebing, Sapir, Lerbin & Pingasor.',
-     'However he has limited resources at his disposal & can send his army',
-     'to only 4 of these planets.'
-  ];
-
-  constructor( private authenticationService: AuthenticationService,
-    private getSourcesService: GetSourcesService) { }
+  constructor( private authenticationService: AuthenticationService, private getSourcesService: GetSourcesService,
+    private dataStoreService: DataStoreService, private renderer: Renderer2, private router: Router,) {
+      this.resetFlag = false;
+      this.timeTaken = 0;
+    }
 
   ngOnInit(): void {
-    // this.tokenInstallation();
-    this.fetchPlanets();
-    this.fetchVehicles();
+    this.tokenInstallation();
+    this.dataStoreService.getTimeTaken().subscribe(value => {
+      this.timeTaken = value;
+    });
+    this.fetchPotentialHideouts();
+    this.fetchAvailableVehicles();
   }
 
   tokenInstallation() {
@@ -53,30 +67,98 @@ export class FindFalconeComponent implements OnInit {
     });
   }
 
-  fetchPlanets() {
-    this.getSourcesService.getPlanet().subscribe( response => {
+  fetchPotentialHideouts() {
+    this.getSourcesService.getPlanets().subscribe( response => {
       if(response) {
         this.planetDetails = response;
+        this.dataStoreService.setPlanetDetails(this.planetDetails);
       }
-
     }, error => {
       console.log(error);
     });
   }
 
-  fetchVehicles() {
+  fetchAvailableVehicles() {
     this.getSourcesService.getVehicles().subscribe( response => {
       if(response) {
         this.vehicleDetails = response;
+        this.dataStoreService.setVehicleDetails(this.vehicleDetails);
       }
-
     }, error => {
       console.log(error);
     });
   }
 
-  gameReset() {
-    this.resetFlag = true;
+
+
+  onPlanetSelect(event, planet) {
+    let planetName = planet.name;
+    console.log('elements');
+
+    if(this.invadePlanets.length < 4 && !(this.invadePlanets.includes(planet))) {
+      let ele =  this.planets.find( data => data.nativeElement.id  == planetName)
+      this.invadePlanets.push(planet)
+      this.renderer.addClass(ele.nativeElement, 'selectedPlanets');
+      if(this.invadePlanets.length == 4) {
+        this.planets.forEach( data => {
+          if(!this.invadePlanets.some(element => element.name === data.nativeElement.id)) {
+            console.log(data.nativeElement.id);
+            this.renderer.addClass(data.nativeElement, 'disablePlanets');
+          }
+        })
+        this.renderer.setStyle(this.spaceVehicleBtn.nativeElement, 'display', 'block');
+      }
+    }
+  }
+
+  onPlanetReset() {
+
+    this.renderer.setStyle(this.spaceVehicleBtn.nativeElement, 'display', 'none');
+    this.renderer.setStyle(this.vehicleZone.nativeElement, 'display', 'none');
+    this.planets.forEach( data => {
+      if(!this.invadePlanets.some(element => element.name === data.nativeElement.id)) {
+        console.log(data.nativeElement.id);
+        this.renderer.removeClass(data.nativeElement, 'disablePlanets');
+      } else {
+        this.renderer.removeClass(data.nativeElement, 'selectedPlanets');
+      }
+    });
+
+    this.invadePlanets = [];
+  }
+
+  displayVehichles() {
+    this.renderer.setStyle(this.vehicleZone.nativeElement, 'display', 'block');
+  }
+
+  scroll(el: HTMLElement) {
+    el.scrollIntoView();
+  }
+
+  findFalcone() {
+    let reqObj = {
+      token: this.authToken,
+      planet_names: this.dataStoreService.selectedPlanets,
+      vehicle_names: this.dataStoreService.selectedVehicles
+    }
+
+    console.log(reqObj);
+
+
+    this.renderer.setProperty(this.sendMsg.nativeElement, 'innerHTML', 'Sending');
+    this.renderer.addClass(this.sendMsg.nativeElement, 'sending');
+    this.renderer.addClass(this.sendBtn.nativeElement, 'sending');
+
+
+    this.getSourcesService.findFalcone(reqObj).subscribe( response => {
+      this.dataStoreService.result = response;
+      this.renderer.setProperty(this.sendMsg.nativeElement, 'innerHTML', 'Sent');
+      this.renderer.addClass(this.sendMsg.nativeElement, 'sent');
+      this.renderer.addClass(this.sendBtn.nativeElement, 'sent');
+      this.router.navigate(['/search-result']);
+    }, error => {
+      console.log(error);
+    });
   }
 
 }

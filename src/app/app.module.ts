@@ -11,6 +11,10 @@ import { FindFalconeComponent } from './find-falcone/find-falcone.component';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { PlanetsComponent } from './planets/planets.component';
 import { VehiclesComponent } from './vehicles/vehicles.component';
+import { HomeComponent } from './home/home.component';
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 
 @NgModule({
   declarations: [
@@ -20,16 +24,22 @@ import { VehiclesComponent } from './vehicles/vehicles.component';
     FindFalconeComponent,
     SearchResultComponent,
     PlanetsComponent,
-    VehiclesComponent
+    VehiclesComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(library: FaIconLibrary) {
+    library.addIconPacks(fas, far);
+  }
+}

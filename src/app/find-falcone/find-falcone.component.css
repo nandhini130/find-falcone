@@ -1,88 +1,4 @@
-.spotlight {
-  background-attachment: fixed;
-  background-position: center center;
-  background-size: cover;
-  box-shadow: 0 0.25em 0.5em 0 rgb(0 0 0 / 25%);
-  height: calc(100vh - 66px);
-  /* height: 100vh; */
-  overflow: hidden;
-  position: relative;
-}
-
-.gamespot {
-  /* height: 100vh; */
-  height: calc(100vh - 66px);
-
-  overflow: hidden;
-  position: relative;
-  box-shadow: 0 0.25em 0.5em 0 rgb(0 0 0 / 25%);
-  border-top: 2px solid #e44c65;
-}
-
-.spotlight p {
-  /* max-width: 800px;
-  font-family: 'Poppins', sans-serif; */
-  color: #59b14a;
-  font-size: 1.8rem;
-  line-height: 2.1rem;
-}
- .line {
-  position: relative;
-  top: 30%;
-  width: 24em;
-  margin: 0 auto;
-  /* border-right: 2px solid #59b14a; */
-  /* font-size: 180%; */
-  text-align: center;
-  white-space: nowrap;
-  overflow: hidden;
-  transform: translateY(-50%);
- }
-
- .animi-typewriter0 {
-   animation: typewriter 4s steps(60) 1s 1 normal both,
-    binkCursor 500ms steps(60) forwards normal;
-  }
-
-  .animi-typewriter1 {
-    animation: typewriter 4s steps(45) 5s 1 normal both,
-     binkCursor 500ms steps(45) forwards normal;
-   }
-
-   .animi-typewriter2 {
-    animation: typewriter 4s steps(45) 9s 1 normal both,
-     binkCursor 500ms steps(45) forwards normal;
-   }
-
-   .animi-typewriter4 {
-    animation: typewriter 4s steps(45) 14s 1 normal both,
-     binkCursor 500ms steps(45) forwards normal;
-   }
-
-   .animi-typewriter5 {
-    animation: typewriter 4s steps(45) 18s 1 normal both,
-     binkCursor 500ms steps(45) forwards normal;
-   }
-
-   @keyframes typewriter {
-    from {
-     width: 0
-    }
-    to {
-     width: 50%
-    }
-  }
-  @keyframes binkCursor {
-    from {
-      border-right-color: #59b14a;
-    }
-    to {
-      border-right-color: transparent;
-    }
-  }
-
-
- cloud-1-2 {
+cloud-1-2 {
   position: absolute;
   left: 0px;
   top: 100px;
@@ -90,6 +6,148 @@
   width: 100%;
 }
 
+.planetSection {
+  height: calc(100vh - 52px);
+  /* box-shadow: 0 0.25em 0.5em 0 rgba(6, 238, 64, 0.925); */
+  border: 2px solid yellow;
+}
+
+.gamespot{
+  height: calc(100vh - 56px);
+}
+
+ .caption{
+  margin-top: 10px;
+  text-align: center;
+}
+
+.caption h1{
+ /* font-size: 20px; */
+ text-align: center;
+}
+@counter-style rocket {
+  system: cyclic;
+  symbols: "\1F680";
+  suffix: " ";
+}
+
+.planetSection .caption ul {
+  list-style: rocket;
+  margin-left: 30px;
+}
+
+.planetSection .caption .steps::marker{
+  font-size: 1.5rem;
+}
+
+
+.planetSection .caption li{
+  font-size: 1rem;
+  line-height: 1.5;
+ }
+
+.availablePlanets {
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.planetNames {
+  background: transparent;
+  color: white;
+  border: none;
+  box-shadow: none;
+  margin: 1rem 2rem;
+  text-align: center;
+  font-size: 1rem;
+}
+
+
+.potentialHideout {
+  width: 8rem;
+  height: 8rem;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  margin: 0;
+  animation: planets 4s linear infinite;
+}
+
+.potentialHideout:hover {
+ cursor: pointer;
+}
+
+@keyframes planets {
+  from {transform: rotate(0);}
+  to {transform: rotate(360deg);}
+}
+
+
+.selectedPlanets {
+  transform: scale(1.5);
+}
+
+.disablePlanets {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.spaceVehicleBtn, .resetBtn {
+  text-align: right;
+  width: 100%;
+  padding-right: 3rem;
+  cursor: pointer;
+}
+
+.spaceVehicleBtn {
+  color: white;
+  display: none;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 20px;
+  text-decoration: none;
+  animation: left_to_right 3s ease;
+}
+
+
+@keyframes left_to_right {
+  from {
+    margin-left: -100%;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Space vehicle section */
+
+.gamespot {
+  /* height: 100vh; */
+  /* height: calc(100vh - 66px); */
+
+  overflow: hidden;
+  position: relative;
+  /* box-shadow: 0 0.25em 0.5em 0 rgb(0 0 0 / 25%); */
+  /* border-top: 2px solid #e44c65; */
+}
 
 .gameBtn {
   width: 50%;
@@ -118,7 +176,7 @@
   /* font-family: 'Poppins', sans-serif; */
   text-align: center;
   color: white !important;
-  font-size: 1.5rem;
+  /* font-size: 1.5rem; */
 }
 
  .timeZone {
@@ -136,3 +194,127 @@
   padding: 5px;
   border: 1px solid #30c9a9;
  }
+
+
+
+
+
+/* 11 */
+.btn-11 {
+  border: none;
+  background: rgb(251,33,117);
+    background: linear-gradient(0deg, rgba(251,33,117,1) 0%, rgba(234,76,137,1) 100%);
+    color: #fff;
+    overflow: hidden;
+}
+.btn-11:hover {
+    text-decoration: none;
+    color: #fff;
+}
+.btn-11:before {
+    position: absolute;
+    content: '';
+    display: inline-block;
+    top: -180px;
+    left: 0;
+    width: 30px;
+    height: 100%;
+    background-color: #fff;
+    animation: shiny-btn1 3s ease-in-out infinite;
+}
+.btn-11:hover{
+  opacity: .7;
+}
+.btn-11:active{
+  box-shadow:  4px 4px 6px 0 rgba(255,255,255,.3),
+              -4px -4px 6px 0 rgba(116, 125, 136, .2),
+    inset -4px -4px 6px 0 rgba(255,255,255,.2),
+    inset 4px 4px 6px 0 rgba(0, 0, 0, .2);
+}
+
+
+@-webkit-keyframes shiny-btn1 {
+    0% { -webkit-transform: scale(0) rotate(45deg); opacity: 0; }
+    80% { -webkit-transform: scale(0) rotate(45deg); opacity: 0.5; }
+    81% { -webkit-transform: scale(4) rotate(45deg); opacity: 1; }
+    100% { -webkit-transform: scale(50) rotate(45deg); opacity: 0; }
+}
+
+
+
+
+
+.app{
+  position: relative;
+  width: 180px;
+  margin: auto;
+}
+.message{
+  font-size: 18px;
+  color: #fff;
+  line-height: 1;
+  padding: 20px 25px;
+  text-align: center;
+  border-radius: 40px;
+  transition: 0.3s ease background-color, 0.3s ease box-shadow;
+  background: #30c9a9;
+}
+.send_btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 20px;
+  line-height: 1;
+  color: #fff;
+  padding: 18px 34px;
+  cursor: pointer;
+  transition: 0.3s ease transform;
+}
+.message.sending{
+  background-color: #ffd615;
+  box-shadow: 0 20px 30px -6px #ffd615;
+}
+.send_btn.sending{
+  transform: rotateZ(-90deg);
+  animation: shake 0.3s ease 0.5s infinite;
+}
+@keyframes shake{
+  10%, 90%
+  {
+    transform: translate3d(-1px,0,0) rotateZ(-90deg);
+  }
+    20%, 80%
+  {
+    transform: translate3d(1px,0,0) rotateZ(-90deg);
+  }
+    30%, 50%, 70%
+  {
+    transform: translate3d(-1px,0,0) rotateZ(-90deg);
+  }
+    40%, 60%
+  {
+    transform: translate3d(1px,0,0) rotateZ(-90deg);
+  }
+}
+
+.message.sent{
+  background-color: #ff1f5a;
+  box-shadow: 0 20px 30px -6px #ff1f5a;
+}
+
+.send_btn.sent{
+  transform: rotateZ(-90deg);
+  animation: moveUp 1s ease 0s forwards;
+}
+@keyframes moveUp{
+  0%{
+    margin-top: 0;
+    transform: scale(1) rotateZ(-90deg);
+  }
+  100%{
+    color: #ff1f5a;
+    margin-top: -100px;
+    transform: scale(0) rotateZ(-90deg);
+  }
+}
+

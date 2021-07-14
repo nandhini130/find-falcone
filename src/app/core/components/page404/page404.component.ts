@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-page404',
-  templateUrl: './page403.component.html',
-  styleUrls: ['./page403.component.css']
+  templateUrl: './page404.component.html',
+  styleUrls: ['./page404.component.css']
 })
-export class Page403Component implements OnInit {
+export class Page404Component implements OnInit {
 
   constructor() { }
 
